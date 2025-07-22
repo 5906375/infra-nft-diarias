@@ -1,0 +1,33 @@
+name: Build Backend (CommonJS)
+
+on:
+  push:
+    paths:
+      - 'Backend-commonjs/**'
+  pull_request:
+    paths:
+      - 'Backend-commonjs/**'
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📁 Instalar dependências do backend
+        working-directory: ./Backend-commonjs
+        run: npm install
+
+      - name: 🛠️ Compilar TypeScript
+        working-directory: ./Backend-commonjs
+        run: npx tsc
+
+      - name: ✅ Build do backend finalizado
+        run: echo "Build do backend CommonJS concluído com sucesso!"
