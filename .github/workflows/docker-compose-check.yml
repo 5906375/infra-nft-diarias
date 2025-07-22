@@ -1,0 +1,20 @@
+name: Validação da Infraestrutura
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker-compose-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔄 Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Verificar docker-compose.yml na raiz
+        run: docker-compose config
+
+      - name: ✅ Validação concluída
+        run: echo "docker-compose.yml validado com sucesso!"
