@@ -1,0 +1,18 @@
+name: Validação do Staging
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  compose-staging-up:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: 🐳 Subir ambiente de staging
+        run: |
+          docker compose -f docker-compose.staging.yml config
