@@ -1,0 +1,33 @@
+name: 🧪 Validação dos Smart Contracts (Hardhat)
+
+on:
+  push:
+    paths:
+      - "backend-commonjs/contracts-nft/**"
+  pull_request:
+    paths:
+      - "backend-commonjs/contracts-nft/**"
+
+jobs:
+  hardhat-compile:
+    name: 🔨 Compilar contratos
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend-commonjs/contracts-nft
+
+    steps:
+      - name: 📦 Checkout do código
+        uses: actions/checkout@v3
+
+      - name: 🟢 Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📥 Instalar dependências
+        run: npm install
+
+      - name: 🔧 Compilar contratos com Hardhat
+        run: npx hardhat compile
