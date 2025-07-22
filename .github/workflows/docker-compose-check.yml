@@ -13,8 +13,8 @@ jobs:
       - name: 🔄 Checkout do repositório
         uses: actions/checkout@v3
 
-      - name: ⚙️ Verificar docker-compose.yml na raiz
-        run: docker-compose config
+      - name: ⚙️ Verificar docker-compose.yml usando Docker Compose v2
+        run: docker compose config
 
       - name: ✅ Validação concluída
         run: echo "docker-compose.yml validado com sucesso!"
