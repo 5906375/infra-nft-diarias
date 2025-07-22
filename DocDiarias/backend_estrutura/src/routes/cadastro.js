@@ -1,0 +1,1 @@
+// cadastro.js - Placeholder

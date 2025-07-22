@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const database_1 = __importDefault(require("./database"));
+const proprietarios_routes_1 = __importDefault(require("./routes/proprietarios.routes"));
+const pagamento_1 = __importDefault(require("./routes/pagamento"));
+const imoveis_routes_1 = __importDefault(require("./routes/imoveis.routes"));
+const cadastro_completo_1 = __importDefault(require("./routes/cadastro-completo"));
+const relatorio_routes_1 = __importDefault(require("./routes/relatorio.routes"));
+const nft_1 = __importDefault(require("./routes/nft"));
+dotenv_1.default.config();
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+(0, database_1.default)();
+app.use('/api/proprietarios', proprietarios_routes_1.default);
+app.use('/api/pagamento', pagamento_1.default);
+app.use('/api/imoveis', imoveis_routes_1.default);
+app.use('/api/cadastro-completo', cadastro_completo_1.default);
+app.use("/api/relatorios", relatorio_routes_1.default);
+app.use("/api/nft", nft_1.default);
+app.listen(4000, () => console.log('🚀 Backend rodando em http://localhost:4000'));

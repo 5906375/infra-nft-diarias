@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    /* ---------- Build / Emit ---------- */
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "noEmit": true,
+    /* ---------- Target / Module ---------- */
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler", // típico do template Vite + TS
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    /* ---------- JSX ---------- */
+    "jsx": "react-jsx",
+    /* ---------- Strict / Lint ---------- */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "skipLibCheck": true,
+    /* ---------- Alias @/ ---------- */
+    "baseUrl": ".", // raiz = frontend/
+    "paths": {
+      "@/*": [
+        "src/*"
+      ] // agora importações '@/...' funcionam
+    }
+  },
+  "include": [
+    "src",
+    "../backend/src/models/imovel.model.ts" // referência extra que você já usava
+  ]
+}

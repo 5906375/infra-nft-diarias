@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "ES2020", // Compatível com recursos modernos do JS
+        "module": "NodeNext", // Suporte moderno de módulos (import/export)
+        "moduleResolution": "NodeNext", // Resolve módulos como no Node.js
+        "esModuleInterop": true, // Permite importar módulos CommonJS (ex: express, dotenv)
+        "resolveJsonModule": true, // Permite importar arquivos .json (ex: ABI do contrato)
+        "strict": true, // Ativa todas as verificações de tipo estritas
+        "skipLibCheck": true, // Ignora checagem de arquivos de dependências
+        "outDir": "dist", // Pasta de saída ao compilar
+        "rootDir": ".", // Raiz dos arquivos TypeScript
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "scripts",
+        "contracts",
+        "backend/src"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

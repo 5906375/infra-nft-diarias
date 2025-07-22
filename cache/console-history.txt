@@ -1,0 +1,5 @@
+npx hardhat run scripts/deploy.ts --network mumbai
+npx hardhat compile
+process.env.PRIVATE_KEY
+process.env.RPC_URL
+npx hardhat console --network mumbai

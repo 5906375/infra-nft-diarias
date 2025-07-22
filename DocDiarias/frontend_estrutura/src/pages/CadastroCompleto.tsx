@@ -1,0 +1,1 @@
+// CadastroCompleto.tsx - Placeholder

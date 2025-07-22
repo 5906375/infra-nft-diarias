@@ -1,0 +1,1 @@
+// Pagamento.tsx - Placeholder

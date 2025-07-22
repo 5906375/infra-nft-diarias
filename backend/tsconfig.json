@@ -1,0 +1,49 @@
+//{
+  //"compilerOptions": {
+  //  "lib": ["ES2020", "DOM"],
+  //  "target": "ES2020",               // ✅ moderno, bom para async/await
+    //"module": "commonjs",           // ✅ compatível com ts-node-dev
+  //  "module": "ESNext",
+  //  "rootDir": "./",
+  //  "outDir": "../dist",
+  //  "esModuleInterop": true,           // ✅ permite importar módulos CJS/ESM
+  //  "moduleResolution": "node",        // ✅ garante resolução moderna de pacotes
+  //  "resolveJsonModule": true,         // ✅ permite importar arquivos .json
+  //  "forceConsistentCasingInFileNames": true,
+  //  "strict": true,                    // ✅ ajuda com type-safety
+  //  "skipLibCheck": true,              // ✅ evita erros em tipos de bibliotecas
+  //  "typeRoots": ["./src/types","./node_modules/@types"
+  //  ]
+  //}
+//}
+
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

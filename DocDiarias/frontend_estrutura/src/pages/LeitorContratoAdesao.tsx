@@ -1,0 +1,1 @@
+// LeitorContratoAdesao.tsx - Placeholder

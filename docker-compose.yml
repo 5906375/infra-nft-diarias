@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  nftdiarias-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - HOST=0.0.0.0
+    networks:
+      - nft-network
+
+  backend:
+    build: ./Backend-commonjs
+    container_name: nftdiarias-backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./Backend-commonjs:/app
+    depends_on:
+      - mongo
+    working_dir: /app
+    command: node dist/server.js
+    networks:
+      - nft-network
+
+  backend_ia:
+    build: ./backend_ia
+    container_name: nftdiarias-backend-ia
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend_ia:/app
+    working_dir: /app
+    command: uvicorn main:app --host 0.0.0.0 --port 5000 --reload
+    networks:
+      - nft-network
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - nft-network
+
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    container_name: ipfs
+    ports:
+      - "4001:4001"
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ipfs_staging:/export
+      - ipfs_data:/data/ipfs
+    networks:
+      - nft-network
+
+volumes:
+  mongodb_data:
+  ipfs_data:
+  ipfs_staging:
+
+networks:
+  nft-network:
+    driver: bridge
